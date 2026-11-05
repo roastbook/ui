@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>michidk/workflows//templates/presets/renovate"],
+  "packageRules": [
+    {
+      "description": "Bump pinned Roastbook workflows weekly",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["Roastbook/workflows"],
+      "groupName": "Roastbook workflows",
+      "schedule": ["before 6am on monday"]
+    }
+  ]
+}

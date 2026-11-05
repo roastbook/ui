@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/tailwind.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@roastbook/ui",
+    "utils": "@roastbook/ui/utils",
+    "ui": "@roastbook/ui",
+    "lib": "@roastbook/ui"
+  },
+  "iconLibrary": "lucide"
+}
