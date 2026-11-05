@@ -252,6 +252,22 @@ th {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+/* Keep the skip link hidden until keyboard focus reaches it. */
+.visually-hidden:focus {
+  position: fixed;
+  inset: 1rem auto auto 1rem;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: var(--control-shadow);
+}
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
