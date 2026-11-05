@@ -1,3 +1,4 @@
+@import "./foundation.css" layer(base);
 @import "./tokens.css" layer(base);
 @source "../components";
 

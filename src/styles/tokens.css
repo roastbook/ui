@@ -40,8 +40,8 @@
   --destructive-text: #9d3b26;
   --favorite: #8b3f60;
   --favorite-foreground: #ffffff;
-  --page-stains: url("/coffee-stains-light.svg");
-  --page-texture: url("/paper-grain-light.svg");
+  --page-stains: url("../../assets/coffee-stains-light.svg");
+  --page-texture: url("../../assets/paper-grain-light.svg");
   --coffee-shadow: 0 8px 24px -18px rgb(60 42 30 / 45%);
   --coffee-shadow-inline: -8px 0 16px -10px rgb(60 42 30 / 50%);
   --coffee-shadow-strong: 0 10px 30px -18px rgb(60 42 30 / 55%);
@@ -106,8 +106,8 @@
   --destructive-text: #eea198;
   --favorite: #d3869b;
   --favorite-foreground: #241b17;
-  --page-stains: url("/coffee-stains-dark.svg");
-  --page-texture: url("/paper-grain-dark.svg");
+  --page-stains: url("../../assets/coffee-stains-dark.svg");
+  --page-texture: url("../../assets/paper-grain-dark.svg");
   --coffee-shadow: 0 8px 24px -18px rgb(0 0 0 / 55%);
   --coffee-shadow-inline: -8px 0 16px -10px rgb(0 0 0 / 60%);
   --coffee-shadow-strong: 0 10px 30px -18px rgb(0 0 0 / 65%);

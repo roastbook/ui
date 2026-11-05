@@ -54,3 +54,14 @@ Add or update shadcn primitives here rather than copying them into a consumer.
 Consumers pin a tested Git commit; `publishConfig` also supports GitHub Packages
 when a release workflow is enabled. No registry credential is needed for the
 public Git dependency.
+
+## Design source
+
+The Roastbook app is the reference design. `foundation.css` supplies its Hanken
+body text, Bricolage headings, paper textures and reduced-motion defaults.
+`tailwind.css` includes these foundations for React consumers; the Astro layout
+loads the same file. Consumers own document scrolling and content layout.
+
+Native Astro controls follow the shared Button, Input and Card treatments.
+When changing those treatments, update the Astro adapter in the same change.
+Do not introduce a separate site palette or font system.

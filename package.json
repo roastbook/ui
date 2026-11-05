@@ -17,7 +17,8 @@
     "./astro/Layout.astro": "./src/astro/Layout.astro",
     "./astro/tokens.css": "./src/astro/tokens.css",
     "./sites": "./src/astro/sites.ts",
-    "./assets/*": "./assets/*"
+    "./assets/*": "./assets/*",
+    "./foundation.css": "./src/styles/foundation.css"
   },
   "files": [
     "src",
