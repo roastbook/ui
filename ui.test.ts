@@ -1,11 +1,17 @@
-import { test, expect } from 'bun:test'
+import { expect, test } from 'bun:test'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { Card, CardContent } from './src/components/card'
 import { cn } from './src/lib/utils'
 
 test('cards retain semantic slots and accept consumer styling', () => {
-  const html = renderToStaticMarkup(createElement(Card, { size: 'sm', className: 'bg-secondary' }, createElement(CardContent, null, 'Coffee')))
+  const html = renderToStaticMarkup(
+    createElement(
+      Card,
+      { size: 'sm', className: 'bg-secondary' },
+      createElement(CardContent, null, 'Coffee'),
+    ),
+  )
   expect(html).toContain('data-slot="card"')
   expect(html).toContain('data-size="sm"')
   expect(html).toContain('data-slot="card-content"')

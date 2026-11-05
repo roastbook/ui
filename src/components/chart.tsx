@@ -2,17 +2,10 @@
 
 import * as React from 'react'
 import * as RechartsPrimitive from 'recharts'
-import {
-  ChartTooltip,
-  ChartTooltipContent,
-} from './chart-content'
-import {
-  CHART_THEMES,
-  type ChartConfig,
-  ChartProvider,
-} from './chart-context'
-import { Skeleton } from './skeleton'
 import { cn } from '../lib/utils'
+import { ChartTooltip, ChartTooltipContent } from './chart-content'
+import { CHART_THEMES, type ChartConfig, ChartProvider } from './chart-context'
+import { Skeleton } from './skeleton'
 
 type ChartRenderStatus = 'loading' | 'ready' | 'unavailable'
 

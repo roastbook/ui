@@ -1,0 +1,64 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag matching package.json, such as v0.1.0
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
+    steps:
+      - name: Checkout release source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Bun and install dependencies
+        uses: Roastbook/workflows/.github/actions/setup@eff204fa01a16060223d56890b847fc75dd539d0 # main
+        with:
+          bun-version-file: package.json
+
+      - name: Verify release tag and version
+        run: |
+          set -euo pipefail
+          version="$(bun -p 'require("./package.json").version')"
+          test "$RELEASE_TAG" = "v$version"
+          git rev-parse --verify "refs/tags/$RELEASE_TAG"
+          git merge-base --is-ancestor HEAD origin/main
+
+      - name: Check and test release source
+        run: |
+          bun run check
+          bun test
+          bun run pack
+
+      - name: Set up npm trusted publishing
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Publish public package with provenance
+        run: npm publish ./release/*.tgz --access public --provenance

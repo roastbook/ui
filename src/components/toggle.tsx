@@ -15,7 +15,8 @@ const toggleVariants = cva(
         pill: 'rounded-full border border-border bg-card px-4 font-display font-bold shadow-control hover:bg-secondary aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-coffee',
       },
       size: {
-        touch: 'h-11 min-w-11 px-4 [@media(hover:hover)_and_(pointer:fine)]:h-10',
+        touch:
+          'h-11 min-w-11 px-4 [@media(hover:hover)_and_(pointer:fine)]:h-10',
         default:
           'h-8 min-w-8 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2',
         sm: "h-7 min-w-7 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",

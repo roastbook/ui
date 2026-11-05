@@ -2,8 +2,8 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
-import { Button } from './button'
 import { cn } from '../lib/utils'
+import { Button } from './button'
 
 const WEEKDAY_LABELS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 const MONTH_FORMATTER = new Intl.DateTimeFormat('en-GB', {

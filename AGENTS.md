@@ -10,3 +10,9 @@
 - Preserve Next.js client boundaries and per-component exports.
 - Use Bun and commit `bun.lock`. Run `bun run check` and `bun test`, then build
   affected consumers before publishing changes.
+
+- Run `bun run format` before publishing. CI enforces the app-derived Biome
+  rules, workflow validation and package checks.
+- npm releases use `.github/workflows/publish.yml` with trusted publishing.
+  Keep the release tag aligned with `package.json` and never add registry tokens
+  to source or replace managed GitHub authentication.

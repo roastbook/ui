@@ -1,9 +1,8 @@
 'use client'
 
 import type * as React from 'react'
-
-import { ScrollArea } from './scroll-area'
 import { cn } from '../lib/utils'
+import { ScrollArea } from './scroll-area'
 
 function Table({ className, ...props }: React.ComponentProps<'table'>) {
   return (

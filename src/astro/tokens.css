@@ -19,11 +19,19 @@
 }
 
 @media (min-width: 768px) {
-  :root { --gutter: 2rem; }
+  :root {
+    --gutter: 2rem;
+  }
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
 body {
   margin: 0;
   font-size: 1rem;
@@ -32,21 +40,76 @@ body {
   display: flex;
   flex-direction: column;
 }
-main { flex: 1; width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 1.25rem var(--gutter) 2rem; }
-h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 1.15; }
-h1 { font-size: 1.875rem; font-weight: 800; margin: 0 0 0.75rem; }
-h2 { font-size: 1.125rem; font-weight: 700; }
-h3 { font-size: 1.0625rem; font-weight: 700; }
-@media (min-width: 768px) { h1 { font-size: 3rem; } }
-a { color: var(--link); text-underline-offset: 0.15em; }
-a:hover { text-decoration-thickness: 2px; }
-:focus-visible { outline: 3px solid color-mix(in srgb, var(--ring) 45%, transparent); outline-offset: 2px; }
-code, pre, kbd { font-family: var(--font-mono); font-size: 0.875em; }
-code { background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 0.35em; }
-pre { background: var(--code-bg); padding: 1rem; border-radius: 0.75rem; overflow: auto; }
-pre code { background: none; padding: 0; }
-.muted { color: var(--muted-foreground); }
-.tabular { font-variant-numeric: tabular-nums; }
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem var(--gutter) 2rem;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+h1 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+}
+h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+a {
+  color: var(--link);
+  text-underline-offset: 0.15em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ring) 45%, transparent);
+  outline-offset: 2px;
+}
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+code {
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 0.35em;
+}
+pre {
+  background: var(--code-bg);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow: auto;
+}
+pre code {
+  background: none;
+  padding: 0;
+}
+.muted {
+  color: var(--muted-foreground);
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
 .card {
   background: var(--card);
   border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
@@ -54,53 +117,144 @@ pre code { background: none; padding: 0; }
   padding: 1rem;
   box-shadow: var(--coffee-shadow);
 }
-@media (min-width: 640px) { .card { padding: 1.25rem; } }
-.button, button, select, input, textarea {
+@media (min-width: 640px) {
+  .card {
+    padding: 1.25rem;
+  }
+}
+.button,
+button,
+select,
+input,
+textarea {
   font: inherit;
   color: inherit;
 }
 /* Native Astro controls follow the app Button and Input treatments. */
-.button, button {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  min-height: 44px; padding: 0.5rem 1.25rem;
-  border: 1px solid var(--border); border-radius: 9999px;
+.button,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
   background: color-mix(in srgb, var(--card) 90%, transparent);
-  font-family: var(--font-display); font-size: 0.875rem; font-weight: 700;
-  text-decoration: none; white-space: nowrap; cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
   box-shadow: var(--control-shadow);
-  transition: color 150ms, background-color 150ms, border-color 150ms, box-shadow 150ms, transform 150ms;
+  transition:
+    color 150ms,
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms,
+    transform 150ms;
 }
-.button:hover, button:hover { background: var(--secondary); border-color: var(--input); }
-.button:active, button:active { transform: translateY(1px); }
-.button[data-variant="primary"], button[data-variant="primary"] {
-  background: var(--primary); color: var(--primary-foreground); border-color: var(--primary);
+.button:hover,
+button:hover {
+  background: var(--secondary);
+  border-color: var(--input);
 }
-.button[data-variant="primary"]:hover, button[data-variant="primary"]:hover {
-  background: var(--coffee); border-color: var(--coffee);
+.button:active,
+button:active {
+  transform: translateY(1px);
 }
-select, input:not([type="checkbox"]):not([type="radio"]), textarea {
-  min-height: 44px; min-width: 0; padding: 0.25rem 0.75rem;
-  border: 1px solid var(--input); border-radius: 0.75rem;
+.button[data-variant="primary"],
+button[data-variant="primary"] {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+.button[data-variant="primary"]:hover,
+button[data-variant="primary"]:hover {
+  background: var(--coffee);
+  border-color: var(--coffee);
+}
+select,
+input:not([type="checkbox"]):not([type="radio"]),
+textarea {
+  min-height: 44px;
+  min-width: 0;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--input);
+  border-radius: 0.75rem;
   background: color-mix(in srgb, var(--card) 75%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--card) 75%, white), var(--control-shadow);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--card) 75%, white),
+    var(--control-shadow);
 }
-select:focus-visible, input:focus-visible, textarea:focus-visible {
-  border-color: var(--ring); background: var(--card);
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  border-color: var(--ring);
+  background: var(--card);
 }
-button:disabled, input:disabled, select:disabled, textarea:disabled {
-  pointer-events: none; cursor: not-allowed; opacity: 0.5;
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
-input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
   border-color: var(--destructive);
   outline: 3px solid color-mix(in srgb, var(--destructive) 20%, transparent);
 }
 @media (hover: hover) and (pointer: fine) {
-  .button, button { min-height: 40px; }
-  select, input:not([type="checkbox"]):not([type="radio"]) { min-height: 36px; }
+  .button,
+  button {
+    min-height: 40px;
+  }
+  select,
+  input:not([type="checkbox"]):not([type="radio"]) {
+    min-height: 36px;
+  }
 }
-table { border-collapse: collapse; width: 100%; }
-th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-th { font-weight: 600; font-size: 0.875rem; color: var(--muted-foreground); }
-.badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600; background: var(--secondary); border: 1px solid var(--border); }
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+th {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

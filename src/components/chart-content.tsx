@@ -7,8 +7,8 @@ import type {
   TooltipPayloadEntry,
 } from 'recharts'
 import * as RechartsPrimitive from 'recharts'
-import { type ChartConfig, useChart } from './chart-context'
 import { cn } from '../lib/utils'
+import { type ChartConfig, useChart } from './chart-context'
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 

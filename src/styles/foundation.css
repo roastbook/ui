@@ -13,23 +13,41 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   background-image: var(--page-stains), var(--page-texture);
-  background-position: center top, 0 0;
+  background-position:
+    center top,
+    0 0;
   background-repeat: repeat, repeat;
-  background-size: 1800px 1400px, 512px 512px;
+  background-size:
+    1800px 1400px,
+    512px 512px;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 @media (width < 768px) {
-  body { background-position: left top, 0 0; }
+  body {
+    background-position:
+      left top,
+      0 0;
+  }
 }
-body.texture-disabled { --page-stains: none; }
-html[data-background-grain="false"] body { --page-texture: none; }
-h1, h2, h3, h4, .font-display {
+body.texture-disabled {
+  --page-stains: none;
+}
+html[data-background-grain="false"] body {
+  --page-texture: none;
+}
+h1,
+h2,
+h3,
+h4,
+.font-display {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

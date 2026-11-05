@@ -19,7 +19,6 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: read
-      packages: read
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -27,7 +26,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up Bun
-        uses: Roastbook/workflows/.github/actions/setup@59653ef579fa73da135c80db90825e269b103a4d # main
+        uses: Roastbook/workflows/.github/actions/setup@eff204fa01a16060223d56890b847fc75dd539d0 # main
         with:
           bun-version-file: package.json
 
@@ -36,3 +35,6 @@ jobs:
 
       - name: Test
         run: bun test
+
+      - name: Check package contents
+        run: bun run pack

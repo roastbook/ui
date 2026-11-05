@@ -65,3 +65,28 @@ loads the same file. Consumers own document scrolling and content layout.
 Native Astro controls follow the shared Button, Input and Card treatments.
 When changing those treatments, update the Astro adapter in the same change.
 Do not introduce a separate site palette or font system.
+
+## Checks and releases
+
+Use Bun for installs and scripts. `bun run check` runs Biome formatting and lint,
+TypeScript and Astro diagnostics. `bun test` runs component tests. Run
+`bun run format` to apply safe formatting and lint fixes. Biome follows the
+Roastbook app's rules; Astro templates are checked by Astro. CI also validates
+GitHub Actions with actionlint and checks Conventional Commit PR titles.
+Renovate inherits the organisation's shared preset and updates pinned actions.
+
+`bun run pack` creates the npm tarball in `release/`. The package ships source
+components, CSS and assets so consumers can compile them with their framework.
+
+The `Publish to npm` workflow publishes `@roastbook/ui` to the public npm
+registry with provenance when a GitHub release is published. It also accepts
+an existing tag through workflow dispatch. The tag must match the version in
+`package.json` and point to a commit on `main`; the workflow reruns checks and
+tests before publishing.
+
+Configure an npm trusted publisher for owner `Roastbook`, repository `ui` and
+workflow `publish.yml`. This uses GitHub OIDC without a stored npm token. For a
+new package, an npm organisation maintainer must first create the package with
+an initial authenticated publish and configure its trusted publisher. The
+managed GitHub App cannot grant npm organisation access. Until the first npm
+release is available, consumers can keep using their pinned Git dependency.

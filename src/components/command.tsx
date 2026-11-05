@@ -2,6 +2,7 @@
 
 import { Combobox as ComboboxPrimitive } from '@base-ui/react/combobox'
 import * as React from 'react'
+import { cn, normalizeForComparison } from '../lib/utils'
 import {
   Dialog,
   DialogContent,
@@ -9,7 +10,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from './dialog'
-import { cn, normalizeForComparison } from '../lib/utils'
 
 type CommandItemSearchProps = {
   value?: string

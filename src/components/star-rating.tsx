@@ -1,7 +1,6 @@
 import { Star } from 'lucide-react'
-
-import { Button } from './button'
 import { cn } from '../lib/utils'
+import { Button } from './button'
 
 type StarRatingProps = {
   readonly value: number

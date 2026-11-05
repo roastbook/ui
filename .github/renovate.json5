@@ -1,13 +1,31 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>michidk/workflows//templates/presets/renovate"],
+  "extends": [
+    "github>michidk/workflows//templates/presets/renovate"
+  ],
   "packageRules": [
     {
       "description": "Bump pinned Roastbook workflows weekly",
-      "matchManagers": ["github-actions"],
-      "matchPackageNames": ["Roastbook/workflows"],
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchPackageNames": [
+        "Roastbook/workflows"
+      ],
       "groupName": "Roastbook workflows",
-      "schedule": ["before 6am on monday"]
+      "schedule": [
+        "before 6am on monday"
+      ]
+    },
+    {
+      "description": "Keep React runtime and type packages together",
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "groupName": "React"
     }
   ]
 }

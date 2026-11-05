@@ -28,9 +28,12 @@
   ],
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "check": "bun run typecheck && bun run check:astro",
+    "check": "bun run lint && bun run typecheck && bun run check:astro",
     "check:astro": "astro check",
-    "test": "bun test"
+    "test": "bun test",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "pack": "bun pm pack --destination release"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -65,16 +68,18 @@
     }
   },
   "devDependencies": {
-    "typescript": "^6.0.0",
+    "@astrojs/check": "^0.9.12",
+    "@biomejs/biome": "2.6.5",
+    "@types/bun": "^1.4.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/bun": "^1.4.4",
+    "astro": "^7.4.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "astro": "^7.4.0",
-    "@astrojs/check": "^0.9.12"
+    "typescript": "^6.0.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }
