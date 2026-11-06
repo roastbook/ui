@@ -78,18 +78,30 @@ Renovate inherits the organisation's shared preset and updates pinned actions.
 `bun run pack` creates the npm tarball in `release/`. The package ships source
 components, CSS and assets so consumers can compile them with their framework.
 
-The `Publish to npm` workflow publishes `@roastbook/ui` to the public npm
-registry with provenance when a GitHub release is published. It also accepts
-an existing tag through workflow dispatch. The tag must match the version in
-`package.json` and point to a commit on `main`; the workflow reruns checks and
-tests before publishing.
+The `Publish GitHub package` workflow publishes `@roastbook/ui` to GitHub
+Packages at `https://npm.pkg.github.com` when a GitHub release is published.
+It also accepts an existing tag through workflow dispatch. The tag must match
+`package.json` and point to a commit on `main`; checks and tests run before
+publication. Authentication uses the workflow's `GITHUB_TOKEN` with
+`packages: write`. No npm account, npm token or trusted publisher is needed.
 
-Configure an npm trusted publisher for owner `Roastbook`, repository `ui` and
-workflow `publish.yml`. This uses GitHub OIDC without a stored npm token. For a
-new package, an npm organisation maintainer must first create the package with
-an initial authenticated publish and configure its trusted publisher. The
-managed GitHub App cannot grant npm organisation access. Until the first npm
-release is available, consumers can keep using their pinned Git dependency.
+GitHub initially publishes packages privately. An organisation owner can change
+the package visibility to public in its GitHub package settings. Check inherited
+repository access and grant consuming repositories Actions read access if the
+package remains private.
+
+To install a published version with Bun, configure the scope in `bunfig.toml`:
+
+```toml
+[install.scopes]
+roastbook = { url = "https://npm.pkg.github.com", token = "$NPM_GITHUB_TOKEN" }
+```
+
+Pass a GitHub token with package read access as `NPM_GITHUB_TOKEN`, including
+for public packages. In GitHub Actions, use `${{ github.token }}` with
+`packages: read` and package access for the consuming repository. Never commit
+the token. Consumers may also retain their public Git commit pins, which need
+no registry authentication.
 
 ## Component showcase
 

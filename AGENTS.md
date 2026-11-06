@@ -13,6 +13,7 @@
 
 - Run `bun run format` before publishing. CI enforces the app-derived Biome
   rules, workflow validation and package checks.
-- npm releases use `.github/workflows/publish.yml` with trusted publishing.
+- Package releases use `.github/workflows/publish.yml` and GitHub Packages
+  with the workflow GITHUB_TOKEN.
   Keep the release tag aligned with `package.json` and never add registry tokens
   to source or replace managed GitHub authentication.
