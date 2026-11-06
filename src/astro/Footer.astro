@@ -9,7 +9,7 @@ const { site, version, buildDate } = Astro.props;
     <p>
       <strong>Roastbook Open Coffee</strong>.{" "}
       {site === "data"
-        ? <>Data licensed <a href="https://opensource.org/license/mit">MIT</a>. Images keep their own licence, credited on each place. No Google Maps or OpenStreetMap data.</>
+        ? <>Data licensed <a href="https://github.com/Roastbook/open-coffee-data/blob/main/LICENSE-DATA">CDLA-Permissive-2.0</a>. Images keep their own licence, credited on each place. No Google Maps or OpenStreetMap data.</>
         : <>Licensed <a href="https://opensource.org/license/mit">MIT</a>.</>}
     </p>
     <p class="muted tabular">
@@ -20,7 +20,7 @@ const { site, version, buildDate } = Astro.props;
   </div>
 </footer>
 <style>
-  .rb-footer { border-top: 1px solid var(--border); font-size: 0.875rem; }
-  .rb-footer__inner { max-width: var(--max-width); margin: 0 auto; padding: 1.25rem var(--gutter) 2rem; }
+  .rb-footer { border-top: 1px solid var(--border); font-size: 0.8125rem; background: var(--card); }
+  .rb-footer__inner { max-width: var(--max-width); margin: 0 auto; padding: 1.5rem var(--gutter) 2rem; display: grid; gap: 0.75rem; }
   .rb-footer p { margin: 0.25rem 0; }
 </style>

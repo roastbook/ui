@@ -40,6 +40,9 @@ import Layout from '@roastbook/ui/astro/Layout.astro';
 The Open Coffee layout, header, footer, mark and site links live here too. Its
 styles use the same semantic palette as the React components, with self-hosted
 fonts and ordinary CSS. Astro consumers do not need React hydration.
+Use `.page-intro` for a page title, description and actions, and
+`.section-heading` for a section title with supporting text. These shared
+layouts wrap on small screens; content-specific styles stay in each site.
 
 ## Development
 

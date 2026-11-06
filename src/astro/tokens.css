@@ -45,7 +45,7 @@ main {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1.25rem var(--gutter) 2rem;
+  padding: 2rem var(--gutter) 3rem;
 }
 h1,
 h2,
@@ -115,7 +115,7 @@ pre code {
   border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
   border-radius: 1rem;
   padding: 1rem;
-  box-shadow: var(--coffee-shadow);
+  box-shadow: none;
 }
 @media (min-width: 640px) {
   .card {
@@ -140,8 +140,8 @@ button {
   min-height: 44px;
   padding: 0.5rem 1.25rem;
   border: 1px solid var(--border);
-  border-radius: 9999px;
-  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border-radius: 0.625rem;
+  background: var(--card);
   font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 700;
@@ -184,7 +184,7 @@ textarea {
   padding: 0.25rem 0.75rem;
   border: 1px solid var(--input);
   border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--card) 75%, transparent);
+  background: var(--card);
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--card) 75%, white),
     var(--control-shadow);
@@ -272,5 +272,49 @@ th {
   * {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+.page-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin: 0.5rem 0 1.75rem;
+}
+.page-intro h1 {
+  margin-bottom: 0.625rem;
+}
+.page-intro p {
+  max-width: 60ch;
+  margin: 0;
+  color: var(--muted-foreground);
+}
+.page-intro .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.375rem;
+}
+.section-heading p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+@media (width < 640px) {
+  main {
+    padding-top: 1.25rem;
   }
 }
