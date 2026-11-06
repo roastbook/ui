@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "@roastbook/ui/tailwind.css";
+@source "../";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+  body {
+    min-width: 320px;
+  }
+  button {
+    cursor: pointer;
+  }
+  section {
+    scroll-margin-top: 2rem;
+  }
+}

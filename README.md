@@ -90,3 +90,17 @@ new package, an npm organisation maintainer must first create the package with
 an initial authenticated publish and configure its trusted publisher. The
 managed GitHub App cannot grant npm organisation access. Until the first npm
 release is available, consumers can keep using their pinned Git dependency.
+
+## Component showcase
+
+Run `bun run dev` for the Astro showcase, or `bun run build:site` to generate
+`site/dist/`. Open `/ui/` locally. The page renders the actual shared React
+components and hydrates their theme controls, dialog, tabs and sample form.
+It includes six palette previews, semantic colour samples, form states and a
+coffee journal example. The app remains the reference design.
+
+CI builds the showcase for pull requests. Pushes to main build and deploy it
+with GitHub Pages at <https://roastbook.github.io/ui/>. Enable GitHub Pages
+with **GitHub Actions** as the source in repository Settings → Pages before
+the first deployment. Showcase source and output are excluded from the npm
+package through its explicit `files` list.

@@ -10,5 +10,12 @@
     "noEmit": true,
     "types": ["bun"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "tests/**/*.ts", "ui.test.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "ui.test.ts",
+    "site/src/**/*.tsx",
+    ".astro/types.d.ts"
+  ]
 }

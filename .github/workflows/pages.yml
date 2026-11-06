@@ -1,0 +1,40 @@
+name: Showcase deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: showcase-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: Roastbook/workflows/.github/actions/setup@7521b5e6491fb9cdc569836c4af6a0abf741df1f # main
+        with:
+          bun-version-file: package.json
+      - name: Check, test and build
+        run: |
+          bun run check
+          bun test
+          bun run build:site
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: site/dist
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    uses: Roastbook/workflows/.github/workflows/pages-deploy.yml@7521b5e6491fb9cdc569836c4af6a0abf741df1f # main

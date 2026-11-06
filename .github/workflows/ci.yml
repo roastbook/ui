@@ -38,3 +38,6 @@ jobs:
 
       - name: Check package contents
         run: bun run pack
+
+      - name: Build component showcase
+        run: bun run build:site
