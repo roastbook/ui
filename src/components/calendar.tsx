@@ -73,7 +73,9 @@ export function Calendar({
           type="button"
           variant="ghost"
           size="icon-sm"
-          onClick={() => setMonth((current) => addMonths(current, -1))}
+          onClick={() => {
+            setMonth((current) => addMonths(current, -1))
+          }}
           aria-label="Previous month"
         >
           <ChevronLeft />
@@ -85,7 +87,9 @@ export function Calendar({
           type="button"
           variant="ghost"
           size="icon-sm"
-          onClick={() => setMonth((current) => addMonths(current, 1))}
+          onClick={() => {
+            setMonth((current) => addMonths(current, 1))
+          }}
           aria-label="Next month"
         >
           <ChevronRight />
@@ -109,7 +113,9 @@ export function Calendar({
               key={day.toISOString()}
               type="button"
               disabled={disabled}
-              onClick={() => onSelect(day)}
+              onClick={() => {
+                onSelect(day)
+              }}
               className={cn(
                 'm-0.5 flex size-8 items-center justify-center rounded-full text-sm transition-colors',
                 outsideMonth && 'text-muted-foreground/50',

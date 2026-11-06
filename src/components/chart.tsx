@@ -40,13 +40,11 @@ const ChartContainer = React.forwardRef<
     updateStatus()
     const observer = new MutationObserver(updateStatus)
     observer.observe(container, { childList: true, subtree: true })
-    const unavailableTimer = window.setTimeout(
-      () =>
-        setRenderStatus((current) =>
-          current === 'ready' ? current : 'unavailable',
-        ),
-      8_000,
-    )
+    const unavailableTimer = window.setTimeout(() => {
+      setRenderStatus((current) =>
+        current === 'ready' ? current : 'unavailable',
+      )
+    }, 8_000)
 
     return () => {
       observer.disconnect()
@@ -108,7 +106,7 @@ function ChartStyle({
   readonly config: ChartConfig
 }) {
   const colorConfig = Object.entries(config).filter(
-    ([, item]) => item.theme || item.color,
+    ([, item]) => item.theme ?? item.color,
   )
   if (colorConfig.length === 0) return null
 

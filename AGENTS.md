@@ -16,4 +16,5 @@
 - Package releases use `.github/workflows/publish.yml` and GitHub Packages
   with the workflow GITHUB_TOKEN.
   Keep the release tag aligned with `package.json` and never add registry tokens
-  to source or replace managed GitHub authentication.
+  to source or replace managed GitHub authentication. If a release is blocked by
+  missing permissions, stop and report the failing step instead.

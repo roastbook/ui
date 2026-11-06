@@ -177,7 +177,7 @@ button[data-variant="primary"]:hover {
   border-color: var(--coffee);
 }
 select,
-input:not([type="checkbox"]):not([type="radio"]),
+input:not([type="checkbox"], [type="radio"]),
 textarea {
   min-height: 44px;
   min-width: 0;
@@ -215,7 +215,7 @@ textarea[aria-invalid="true"] {
     min-height: 40px;
   }
   select,
-  input:not([type="checkbox"]):not([type="radio"]) {
+  input:not([type="checkbox"], [type="radio"]) {
     min-height: 36px;
   }
 }

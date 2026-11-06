@@ -82,14 +82,18 @@ export default function Showcase() {
           <Button
             variant={selectedTheme === 'light:roast' ? 'default' : 'outline'}
             aria-pressed={selectedTheme === 'light:roast'}
-            onClick={() => theme('light', 'roast')}
+            onClick={() => {
+              theme('light', 'roast')
+            }}
           >
             Roast light
           </Button>
           <Button
             variant={selectedTheme === 'dark:roast' ? 'default' : 'outline'}
             aria-pressed={selectedTheme === 'dark:roast'}
-            onClick={() => theme('dark', 'roast')}
+            onClick={() => {
+              theme('dark', 'roast')
+            }}
           >
             Roast dark
           </Button>
@@ -98,7 +102,9 @@ export default function Showcase() {
               selectedTheme === 'light:classic-light' ? 'default' : 'outline'
             }
             aria-pressed={selectedTheme === 'light:classic-light'}
-            onClick={() => theme('light', 'classic-light')}
+            onClick={() => {
+              theme('light', 'classic-light')
+            }}
           >
             Classic light
           </Button>
@@ -107,7 +113,9 @@ export default function Showcase() {
               selectedTheme === 'dark:classic-dark' ? 'default' : 'outline'
             }
             aria-pressed={selectedTheme === 'dark:classic-dark'}
-            onClick={() => theme('dark', 'classic-dark')}
+            onClick={() => {
+              theme('dark', 'classic-dark')
+            }}
           >
             Classic dark
           </Button>
@@ -116,14 +124,18 @@ export default function Showcase() {
               selectedTheme === 'light:pure-light' ? 'default' : 'outline'
             }
             aria-pressed={selectedTheme === 'light:pure-light'}
-            onClick={() => theme('light', 'pure-light')}
+            onClick={() => {
+              theme('light', 'pure-light')
+            }}
           >
             Pure light
           </Button>
           <Button
             variant={selectedTheme === 'dark:pure-dark' ? 'default' : 'outline'}
             aria-pressed={selectedTheme === 'dark:pure-dark'}
-            onClick={() => theme('dark', 'pure-dark')}
+            onClick={() => {
+              theme('dark', 'pure-dark')
+            }}
           >
             Pure dark
           </Button>
@@ -293,7 +305,9 @@ export default function Showcase() {
               <Textarea
                 id="brew-note"
                 placeholder="What do you notice in the cup?"
-                onChange={() => setSaved(false)}
+                onChange={() => {
+                  setSaved(false)
+                }}
               />
               <div className="flex flex-wrap items-center gap-4">
                 <Button type="submit">Save sample note</Button>

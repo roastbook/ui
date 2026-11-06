@@ -78,7 +78,9 @@ function StarRating({
             <button
               key={starValue}
               type="button"
-              onClick={() => onChange(starValue === value ? 0 : starValue)}
+              onClick={() => {
+                onChange(starValue === value ? 0 : starValue)
+              }}
               className="flex size-11 shrink-0 items-center justify-center transition-transform motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:size-8 [@media(hover:hover)_and_(pointer:fine)]:hover:scale-110"
               aria-label={`Rate ${starValue} out of ${max}`}
               aria-pressed={starValue === value}
@@ -101,7 +103,9 @@ function StarRating({
           type="button"
           variant="ghost"
           size="sm"
-          onClick={() => onChange(0)}
+          onClick={() => {
+            onChange(0)
+          }}
         >
           Clear rating
         </Button>
