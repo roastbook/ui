@@ -43,6 +43,9 @@ fonts and ordinary CSS. Astro consumers do not need React hydration.
 Use `.page-intro` for a page title, description and actions, and
 `.section-heading` for a section title with supporting text. These shared
 layouts wrap on small screens; content-specific styles stay in each site.
+Code blocks containing `<pre><code>` get a copy button with accessible
+feedback and manual selection when clipboard access is unavailable. Add
+`data-no-copy` to an ancestor to opt out.
 
 ## Development
 
