@@ -1,0 +1,69 @@
+---
+/** Number field with minus and plus buttons, matching the Roastbook app's NumberInput. Works without React. */
+export interface Props {
+  id: string;
+  value: number | string;
+  min?: number;
+  max?: number;
+  step?: number;
+  name?: string;
+  class?: string;
+}
+const { id, value, min, max, step = 1, name, class: className } = Astro.props;
+const label = `by ${step}`;
+---
+<span class="rb-stepper" data-stepper data-min={min} data-max={max} data-step={step}>
+  <button type="button" data-dir="-1" aria-label={`Decrease ${label}`} tabindex="-1">
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14" /></svg>
+  </button>
+  <input id={id} name={name} class={className} type="text" role="spinbutton" inputmode="decimal" autocomplete="off" value={value} aria-valuemin={min} aria-valuemax={max} aria-valuenow={value} />
+  <button type="button" data-dir="1" aria-label={`Increase ${label}`} tabindex="-1">
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5v14" /></svg>
+  </button>
+</span>
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>("[data-stepper]")) {
+    const input = root.querySelector("input")!;
+    const [down, up] = root.querySelectorAll("button");
+    const num = (v: string | undefined) => (v === undefined || v === "" ? undefined : Number(v));
+    const min = num(root.dataset.min), max = num(root.dataset.max), step = Number(root.dataset.step) || 1;
+    const decimals = (String(step).split(".")[1] ?? "").length;
+    const sync = () => {
+      const v = Number(input.value);
+      const ok = input.value.trim() !== "" && Number.isFinite(v);
+      input.setAttribute("aria-valuenow", ok ? String(v) : "");
+      down.disabled = ok && min !== undefined && v <= min;
+      up.disabled = ok && max !== undefined && v >= max;
+    };
+    const change = (dir: 1 | -1) => {
+      const v = Number(input.value);
+      const from = input.value.trim() !== "" && Number.isFinite(v) ? v : (min ?? 0);
+      const next = Math.min(max ?? Infinity, Math.max(min ?? -Infinity, from + dir * step));
+      input.value = String(Number(next.toFixed(decimals)));
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    };
+    down.addEventListener("click", () => change(-1));
+    up.addEventListener("click", () => change(1));
+    input.addEventListener("keydown", (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey || (e.key !== "ArrowUp" && e.key !== "ArrowDown")) return;
+      e.preventDefault();
+      change(e.key === "ArrowUp" ? 1 : -1);
+    });
+    // Accept a decimal comma.
+    input.addEventListener("input", () => { if (input.value.includes(",")) input.value = input.value.replace(",", "."); sync(); });
+    sync();
+  }
+</script>
+<style>
+  .rb-stepper { display: inline-flex; min-width: 0; vertical-align: middle; }
+  .rb-stepper button { width: 2.25rem; min-height: 36px; padding: 0; box-shadow: none; background: transparent; color: var(--muted-foreground); }
+  .rb-stepper button:first-child { border-radius: 0.625rem 0 0 0.625rem; }
+  .rb-stepper button:last-child { border-radius: 0 0.625rem 0.625rem 0; }
+  .rb-stepper button:hover:not(:disabled) { background: var(--secondary); color: var(--foreground); }
+  .rb-stepper input { width: 4.5rem; min-height: 36px; border-radius: 0; border-inline: 0; text-align: center; font-variant-numeric: tabular-nums; }
+  .rb-stepper input:focus-visible { position: relative; z-index: 1; }
+  @media (pointer: coarse) {
+    .rb-stepper button, .rb-stepper input { min-height: 44px; }
+    .rb-stepper button { width: 2.75rem; }
+  }
+</style>

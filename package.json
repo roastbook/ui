@@ -15,6 +15,7 @@
     "./tokens.css": "./src/styles/tokens.css",
     "./tailwind.css": "./src/styles/tailwind.css",
     "./astro/Layout.astro": "./src/astro/Layout.astro",
+    "./astro/NumberStepper.astro": "./src/astro/NumberStepper.astro",
     "./astro/tokens.css": "./src/astro/tokens.css",
     "./sites": "./src/astro/sites.ts",
     "./assets/*": "./assets/*",

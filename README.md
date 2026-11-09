@@ -47,6 +47,8 @@ Use `.page-intro` for a page title, description and actions, and
 `.eyebrow` (breadcrumbs), `.facts` (a definition grid), `.table-scroll`,
 `.actions` and `.badge[data-tone]` are shared too. These layouts wrap on small
 screens; content-specific styles stay in each site.
+`@roastbook/ui/astro/NumberStepper.astro` is the app's number field (minus and plus
+buttons, arrow keys, bounds) for pages without React; it dispatches `input` events.
 Optional Umami and PostHog tracking turns on only when the build sets
 `PUBLIC_UMAMI_SCRIPT_URL` and `PUBLIC_UMAMI_WEBSITE_ID`, or `PUBLIC_POSTHOG_TOKEN`
 (and optionally `PUBLIC_POSTHOG_HOST`). Both run without cookies or storage, honour
