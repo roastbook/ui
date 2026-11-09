@@ -73,6 +73,10 @@ h3 {
     font-size: 2.25rem;
   }
 }
+/* Anchor targets land below the sticky section row. */
+[id] {
+  scroll-margin-top: 4rem;
+}
 a {
   color: var(--link);
   text-underline-offset: 0.15em;

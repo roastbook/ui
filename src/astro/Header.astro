@@ -21,14 +21,14 @@ const home = site === "schema" ? SITES.schema : SITES.data;
       </button>
     </nav>
   </div>
-  {nav && nav.length > 0 && (
-    <nav class="rb-subnav" aria-label={siteName}>
-      <div class="rb-subnav__inner">
-        {nav.map((l) => <a href={l.href} aria-current={l.current ? "page" : undefined}>{l.label}</a>)}
-      </div>
-    </nav>
-  )}
 </header>
+{nav && nav.length > 0 && (
+  <nav class="rb-subnav" aria-label={siteName}>
+    <div class="rb-subnav__inner">
+      {nav.map((l) => <a href={l.href} aria-current={l.current ? "page" : undefined}>{l.label}</a>)}
+    </div>
+  </nav>
+)}
 <script>
   document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
@@ -49,7 +49,8 @@ const home = site === "schema" ? SITES.schema : SITES.data;
   .rb-sites a:hover { background: var(--muted); color: var(--foreground); }
   .rb-sites a[aria-current="page"] { background: var(--secondary); color: var(--link); }
   .rb-theme { width: 40px; min-height: 40px; padding: 0; margin-left: 0.5rem; border-radius: 0.625rem; box-shadow: none; }
-  .rb-subnav { border-top: 1px solid var(--border); }
+  /* Stays in view so long pages keep a way back to the site's sections. */
+  .rb-subnav { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border); background: var(--card); }
   .rb-subnav__inner { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
   .rb-subnav a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.625rem; margin-bottom: -1px; border-bottom: 2px solid transparent; color: var(--muted-foreground); text-decoration: none; font-weight: 600; font-size: 0.875rem; white-space: nowrap; }
   .rb-subnav a:hover { color: var(--foreground); }
