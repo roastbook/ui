@@ -47,6 +47,10 @@ Use `.page-intro` for a page title, description and actions, and
 `.eyebrow` (breadcrumbs), `.facts` (a definition grid), `.table-scroll`,
 `.actions` and `.badge[data-tone]` are shared too. These layouts wrap on small
 screens; content-specific styles stay in each site.
+Optional Umami and PostHog tracking turns on only when the build sets
+`PUBLIC_UMAMI_SCRIPT_URL` and `PUBLIC_UMAMI_WEBSITE_ID`, or `PUBLIC_POSTHOG_TOKEN`
+(and optionally `PUBLIC_POSTHOG_HOST`). Both run without cookies or storage, honour
+Do Not Track and record only on the production hostname.
 Code blocks containing `<pre><code>` get a copy button with accessible
 feedback and manual selection when clipboard access is unavailable. Add
 `data-no-copy` to an ancestor to opt out.

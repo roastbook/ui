@@ -1,0 +1,37 @@
+---
+/**
+ * Optional Umami and PostHog tracking, configured only through build-time variables so no
+ * identifier lives in the repository. Nothing renders unless the variables are set.
+ *   PUBLIC_UMAMI_SCRIPT_URL, PUBLIC_UMAMI_WEBSITE_ID
+ *   PUBLIC_POSTHOG_TOKEN, PUBLIC_POSTHOG_HOST (default https://eu.i.posthog.com)
+ * Both tools run without cookies or storage, honour Do Not Track and only record on the
+ * production hostname, so previews and local builds stay out of the data.
+ */
+export interface Props { site: "schema" | "data" }
+const { site } = Astro.props;
+const env = import.meta.env;
+const host = site === "schema" ? "schema.roastbook.coffee" : "data.roastbook.coffee";
+const umami = env.PUBLIC_UMAMI_SCRIPT_URL && env.PUBLIC_UMAMI_WEBSITE_ID ? { src: env.PUBLIC_UMAMI_SCRIPT_URL, id: env.PUBLIC_UMAMI_WEBSITE_ID } : null;
+const posthogHost = env.PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com";
+const posthog = env.PUBLIC_POSTHOG_TOKEN ? { token: env.PUBLIC_POSTHOG_TOKEN, host: posthogHost, assets: `${posthogHost.replace(".i.posthog.com", "-assets.i.posthog.com")}/static/array.js`, domain: host } : null;
+---
+{umami && <script is:inline defer src={umami.src} data-website-id={umami.id} data-domains={host} data-do-not-track="true"></script>}
+{posthog && (
+  <script is:inline define:vars={{ posthog }}>
+    if (location.hostname === posthog.domain) {
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = posthog.assets;
+      s.onload = () => window.posthog?.init(posthog.token, {
+        api_host: posthog.host,
+        persistence: "memory",
+        autocapture: false,
+        disable_session_recording: true,
+        disable_surveys: true,
+        person_profiles: "identified_only",
+        respect_dnt: true,
+      });
+      document.head.append(s);
+    }
+  </script>
+)}

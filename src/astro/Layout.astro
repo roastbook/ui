@@ -2,6 +2,7 @@
 import "./tokens.css";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import Analytics from "./Analytics.astro";
 import type { NavLink } from "./sites";
 
 export interface Props {
@@ -37,6 +38,7 @@ const siteName = site === "schema" ? "Open Coffee Schema" : "Open Coffee Data";
         document.documentElement.dataset.theme = dark ? "dark" : "light";
       })();
     </script>
+    <Analytics site={site} />
     <slot name="head" />
   </head>
   <body>
