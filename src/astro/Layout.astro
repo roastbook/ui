@@ -2,6 +2,7 @@
 import "./tokens.css";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import type { NavLink } from "./sites";
 
 export interface Props {
   title: string;
@@ -12,8 +13,10 @@ export interface Props {
   version?: string;
   buildDate?: string;
   canonical?: string;
+  /** The site's own sections, shown as a row under the header. */
+  nav?: NavLink[];
 }
-const { title, description, site, version, buildDate, canonical } = Astro.props;
+const { title, description, site, version, buildDate, canonical, nav } = Astro.props;
 const siteName = site === "schema" ? "Open Coffee Schema" : "Open Coffee Data";
 ---
 <!doctype html>
@@ -38,7 +41,7 @@ const siteName = site === "schema" ? "Open Coffee Schema" : "Open Coffee Data";
   </head>
   <body>
     <a class="visually-hidden" href="#main">Skip to content</a>
-    <Header site={site} siteName={siteName} />
+    <Header site={site} siteName={siteName} nav={nav} />
     <main id="main"><slot /></main>
     <Footer site={site} version={version} buildDate={buildDate} />
   </body>

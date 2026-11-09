@@ -1,9 +1,9 @@
 ---
 import mark from "../../assets/mark.svg?raw";
-import { SITES } from "./sites";
+import { type NavLink, SITES } from "./sites";
 
-export interface Props { site: "schema" | "data"; siteName: string }
-const { site, siteName } = Astro.props;
+export interface Props { site: "schema" | "data"; siteName: string; nav?: NavLink[] }
+const { site, siteName, nav } = Astro.props;
 const home = site === "schema" ? SITES.schema : SITES.data;
 ---
 <header class="rb-header">
@@ -12,7 +12,7 @@ const home = site === "schema" ? SITES.schema : SITES.data;
       <span class="rb-mark" set:html={mark} />
       <span class="rb-brand__text"><strong>Roastbook</strong><span class="rb-site">{siteName}</span></span>
     </a>
-    <nav aria-label="Open Coffee">
+    <nav class="rb-sites" aria-label="Open Coffee">
       <a href={SITES.schema} aria-current={site === "schema" ? "page" : undefined}>Schema</a>
       <a href={SITES.data} aria-current={site === "data" ? "page" : undefined}>Data</a>
       <a href={site === "schema" ? SITES.schemaRepo : SITES.dataRepo}>GitHub</a>
@@ -21,6 +21,13 @@ const home = site === "schema" ? SITES.schema : SITES.data;
       </button>
     </nav>
   </div>
+  {nav && nav.length > 0 && (
+    <nav class="rb-subnav" aria-label={siteName}>
+      <div class="rb-subnav__inner">
+        {nav.map((l) => <a href={l.href} aria-current={l.current ? "page" : undefined}>{l.label}</a>)}
+      </div>
+    </nav>
+  )}
 </header>
 <script>
   document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
@@ -31,21 +38,26 @@ const home = site === "schema" ? SITES.schema : SITES.data;
 </script>
 <style>
   .rb-header { border-bottom: 1px solid var(--border); background: var(--card); }
-  .rb-header__inner { max-width: var(--max-width); margin: 0 auto; padding: 0.875rem var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem 1.5rem; flex-wrap: wrap; }
+  .rb-header__inner { max-width: var(--max-width); margin: 0 auto; padding: 0.625rem var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem 1.5rem; flex-wrap: wrap; }
   .rb-brand { display: inline-flex; align-items: center; gap: 0.75rem; color: var(--foreground); text-decoration: none; min-height: 44px; }
   .rb-brand__text { display: grid; gap: 0.125rem; line-height: 1.2; }
   .rb-brand strong { font-family: var(--font-display); font-size: 1.125rem; }
   .rb-mark :global(svg) { width: 2rem; height: auto; display: block; }
   .rb-site { color: var(--muted-foreground); font-size: 0.8125rem; }
-  nav { display: flex; align-items: center; gap: 0.25rem; }
-  nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 1rem; border-radius: 0.625rem; color: var(--muted-foreground); text-decoration: none; font-weight: 600; font-size: 0.875rem; }
-  nav a:hover { background: var(--muted); color: var(--foreground); }
-  nav a[aria-current="page"] { background: var(--secondary); color: var(--link); }
-  .rb-theme { width: 44px; min-height: 44px; padding: 0; margin-left: 0.5rem; border-radius: 0.625rem; box-shadow: none; }
+  .rb-sites { display: flex; align-items: center; gap: 0.25rem; }
+  .rb-sites a { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 0.875rem; border-radius: 0.625rem; color: var(--muted-foreground); text-decoration: none; font-weight: 600; font-size: 0.875rem; }
+  .rb-sites a:hover { background: var(--muted); color: var(--foreground); }
+  .rb-sites a[aria-current="page"] { background: var(--secondary); color: var(--link); }
+  .rb-theme { width: 40px; min-height: 40px; padding: 0; margin-left: 0.5rem; border-radius: 0.625rem; box-shadow: none; }
+  .rb-subnav { border-top: 1px solid var(--border); }
+  .rb-subnav__inner { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
+  .rb-subnav a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.625rem; margin-bottom: -1px; border-bottom: 2px solid transparent; color: var(--muted-foreground); text-decoration: none; font-weight: 600; font-size: 0.875rem; white-space: nowrap; }
+  .rb-subnav a:hover { color: var(--foreground); }
+  .rb-subnav a[aria-current="page"] { color: var(--foreground); border-color: var(--primary); }
   @media (width < 480px) {
     .rb-header__inner { gap: 0.5rem; }
-    nav { width: 100%; }
-    nav a { flex: 1; }
+    .rb-sites { width: 100%; }
+    .rb-sites a { flex: 1; }
     .rb-theme { margin-left: auto; }
   }
 </style>

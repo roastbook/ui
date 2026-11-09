@@ -6,6 +6,13 @@ export const SITES = {
   roastbook: 'https://roastbook.coffee/',
 } as const
 
+/** One entry of a site's own navigation, shown under the shared header. */
+export interface NavLink {
+  href: string
+  label: string
+  current?: boolean
+}
+
 /** Deep link to a field's definition in the Schema Explorer, e.g. fieldUrl("serving.filter"). */
 export const fieldUrl = (
   path: string,

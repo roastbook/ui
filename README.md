@@ -40,9 +40,13 @@ import Layout from '@roastbook/ui/astro/Layout.astro';
 The Open Coffee layout, header, footer, mark and site links live here too. Its
 styles use the same semantic palette as the React components, with self-hosted
 fonts and ordinary CSS. Astro consumers do not need React hydration.
+Pass `nav` (an array of `{ href, label, current }` from `@roastbook/ui/sites`)
+to show the site's own sections as a row under the header.
 Use `.page-intro` for a page title, description and actions, and
-`.section-heading` for a section title with supporting text. These shared
-layouts wrap on small screens; content-specific styles stay in each site.
+`.section-heading` for a section title with supporting text. `.lead`,
+`.eyebrow` (breadcrumbs), `.facts` (a definition grid), `.table-scroll`,
+`.actions` and `.badge[data-tone]` are shared too. These layouts wrap on small
+screens; content-specific styles stay in each site.
 Code blocks containing `<pre><code>` get a copy button with accessible
 feedback and manual selection when clipboard access is unavailable. Add
 `data-no-copy` to an ancestor to opt out.

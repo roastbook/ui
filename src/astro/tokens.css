@@ -60,8 +60,9 @@ h1 {
   margin: 0 0 0.75rem;
 }
 h2 {
-  font-size: 1.125rem;
+  font-size: 1.375rem;
   font-weight: 700;
+  margin: 2rem 0 0.75rem;
 }
 h3 {
   font-size: 1.0625rem;
@@ -69,7 +70,7 @@ h3 {
 }
 @media (min-width: 768px) {
   h1 {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 }
 a {
@@ -322,25 +323,113 @@ th {
 .rb-code-block {
   position: relative;
   min-width: 0;
-  padding-top: 3.5rem;
   margin: 1rem 0;
-  border-radius: 0.75rem;
-  background: var(--code-bg);
 }
 .rb-code-block pre {
   margin: 0;
+  padding-right: 5.5rem;
 }
 .rb-code-copy {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  min-height: 36px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.8125rem;
+  min-height: 32px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
   box-shadow: none;
 }
 @media (pointer: coarse) {
   .rb-code-copy {
     min-height: 44px;
   }
+}
+
+/* Documentation primitives shared by the Schema and Data sites. */
+.lead {
+  margin: 0 0 1rem;
+  max-width: 65ch;
+  font-size: 1.0625rem;
+  color: var(--muted-foreground);
+}
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+.eyebrow a {
+  color: inherit;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.badge[data-tone="positive"] {
+  color: var(--positive-text);
+}
+.badge[data-tone="destructive"] {
+  color: var(--destructive-text);
+  border-color: currentcolor;
+  background: transparent;
+}
+.facts {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  margin: 0.75rem 0;
+}
+.facts > div {
+  display: contents;
+}
+.facts dt {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+.facts dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (width < 480px) {
+  .facts {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+  .facts dd {
+    margin-bottom: 0.5rem;
+  }
+}
+details > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+.table-scroll {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.table-scroll th,
+.table-scroll td {
+  padding: 0.75rem 1rem;
+}
+.table-scroll thead {
+  background: var(--secondary);
+}
+.table-scroll tbody th {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+.table-scroll tbody tr:hover {
+  background: var(--muted);
+}
+.table-scroll tbody tr:last-child > * {
+  border-bottom: 0;
 }
