@@ -4,6 +4,9 @@ Shared shadcn/ui components based on Base UI, extracted from the Roastbook app.
 The app's components and themes are the starting point. Changes now belong here.
 The initial extraction comes from app commit `5f65b4b3215be0d3e5d0770f6e3c42fa675ca475`.
 
+[React](#react) · [Astro](#astro) · [Development](#development) ·
+[Releases](#checks-and-releases) · [Showcase](#component-showcase)
+
 ## React
 
 Install `@roastbook/ui` from this repository at a pinned commit. Import individual
@@ -25,7 +28,8 @@ This registers the package's component sources with Tailwind and loads the app's
 semantic tokens and six themes. Applications own fonts, document scrolling,
 page layouts and feature logic. React entry points that use hooks or Base UI
 carry `use client` for Next.js. Add `transpilePackages: ['@roastbook/ui']`
-to the Next.js configuration so it compiles the TypeScript package sources. Pass the current theme to `Toaster` from the app.
+to the Next.js configuration so it compiles the TypeScript package sources.
+Pass the current theme to `Toaster` from the app.
 Copy assets from `@roastbook/ui/assets/*` to the public root when using textures.
 
 ## Astro
@@ -67,9 +71,9 @@ bun test
 
 Use the app's existing Storybook stories to exercise the shared React controls.
 Add or update shadcn primitives here rather than copying them into a consumer.
-Consumers pin a tested Git commit; `publishConfig` also supports GitHub Packages
-when a release workflow is enabled. No registry credential is needed for the
-public Git dependency.
+Consumers pin a tested Git commit or install a published version from GitHub
+Packages (see [Checks and releases](#checks-and-releases)). No registry
+credential is needed for the public Git dependency.
 
 ## Design source
 
@@ -132,5 +136,5 @@ with GitHub Pages at <https://ui.roastbook.coffee/>. Enable GitHub Pages
 with **GitHub Actions** as the source in repository Settings → Pages before
 the first deployment. Configure `ui.roastbook.coffee` as its custom domain
 and enable HTTPS when GitHub finishes issuing the certificate. Its DNS-only
-CNAME is managed in `roastbook-infra/config/dns.json`. Showcase source and output are excluded from the npm
-package through its explicit `files` list.
+CNAME is managed in `roastbook-infra/config/dns.json`. Showcase source and
+output are excluded from the npm package through its explicit `files` list.
